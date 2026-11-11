@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rahmani Sehat Ltd</title>
+<meta name="description" content="Rahmani Sehat Ltd: trusted health products for pharmacies, clinics and hospitals.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%230F4C4A'/%3E%3Cpath d='M24 12v24M12 24h24' stroke='%23E0A526' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #13233F;
+    --navy-2: #1E3558;
+    --wa: #1A8F4C;
+    --wa-2: #15773F;
+    --teal: #0F4C4A;
+    --saffron: #E0A526;
+    --ink: #141E2E;
+    --muted: #5B6779;
+    --glass: rgba(255, 255, 255, 0.58);
+    --glass-edge: rgba(255, 255, 255, 0.85);
+    --bg: #E9EEF8;
+    --shadow: 0 18px 50px rgba(19, 35, 63, 0.12);
+    --btn-navy: #13233F;
+    --surface: rgba(255, 255, 255, 0.7);
+    --line-2: rgba(19, 35, 63, 0.14);
+    --map-line: rgba(19, 35, 63, 0.3);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+  body {
+    margin: 0;
+    font-family: Vazirmatn, "Noto Naskh Arabic", system-ui, sans-serif;
+    color: var(--ink);
+    line-height: 1.7;
+    background:
+      radial-gradient(900px 500px at 10% -10%, #D9E8FF 0%, transparent 60%),
+      radial-gradient(700px 500px at 100% 20%, #DDF3EA 0%, transparent 55%),
+      radial-gradient(800px 600px at 40% 110%, #F4E9D5 0%, transparent 60%),
+      var(--bg);
+    min-height: 100vh;
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  :focus-visible { outline: 3px solid var(--saffron); outline-offset: 3px; border-radius: 10px; }
+  a { color: inherit; }
+  .wrap { width: min(1080px, 92%); margin: 0 auto; }
+
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-edge);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 26px; border-radius: 999px; font-family: inherit; font-weight: 600; font-size: 1rem; line-height: 1; text-decoration: none;
+    border: 0; cursor: pointer; transition: transform .15s ease, background .2s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-wa { background: var(--wa); color: #fff; }
+  .btn-wa:hover { background: var(--wa-2); }
+  .btn-navy { background: var(--btn-navy); color: #fff; }
+  .btn-navy:hover { background: var(--navy-2); }
+  .btn-light { background: rgba(255,255,255,0.85); color: var(--navy); }
+  .icon-circle {
+    width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+    background: rgba(255,255,255,0.18);
+  }
+
+  /* Header */
+  header { position: sticky; top: 14px; z-index: 20; margin-top: 14px; }
+  .topbar {
+    direction: ltr;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 10px 14px; border-radius: 999px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand-name { font-weight: 700; font-size: 1.1rem; color: var(--navy); line-height: 1.1; }
+  .brand-name small { display: block; font-size: .72rem; color: var(--muted); font-weight: 500; letter-spacing: .04em; }
+  .tools { display: flex; align-items: center; gap: 8px; }
+  .lang { display: flex; gap: 4px; }
+  .lang button {
+    border: 0; background: rgba(255,255,255,.7); color: var(--navy);
+    padding: 7px 12px; border-radius: 999px; cursor: pointer; font-family: inherit; font-weight: 600; font-size: .85rem;
+  }
+  .lang button[aria-pressed="true"] { background: var(--navy); color: #fff; }
+  .menu-btn {
+    width: 42px; height: 42px; border-radius: 50%; border: 0; cursor: pointer;
+    background: rgba(255,255,255,.7); display: grid; place-items: center; color: var(--navy);
+  }
+  nav.links { display: flex; gap: 22px; }
+  nav.links a { text-decoration: none; font-weight: 500; font-size: .95rem; color: var(--navy); }
+  nav.links a:hover { color: var(--wa); }
+
+  /* Hero */
+  .hero { padding: 64px 0 40px; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+  .hero h1 {
+    font-size: clamp(2.1rem, 4.6vw, 3.4rem); line-height: 1.35; margin: 0 0 18px; color: var(--navy);
+    font-weight: 700;
+  }
+  .hero p { color: var(--muted); font-size: 1.08rem; margin: 0 0 30px; max-width: 46ch; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-card { padding: 34px 30px; }
+  .hero-card h2 { margin: 0 0 6px; font-size: 1.3rem; color: var(--navy); }
+  .hero-card p { margin: 0 0 18px; color: var(--muted); font-size: .98rem; }
+  .logo-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+  .logo-slot {
+    flex: 1 1 120px; min-height: 64px; display: grid; place-items: center; font-size: .85rem;
+    color: var(--muted); border: 1px dashed #B7C2D3; border-radius: 16px; background: rgba(255,255,255,.5);
+  }
+
+  /* Stats */
+  .stats { padding: 10px 0 40px; }
+  .stats-card {
+    display: grid; grid-template-columns: repeat(4, 1fr); padding: 8px 0;
+  }
+  .stat { text-align: center; padding: 26px 12px; }
+  .stat + .stat { border-inline-start: 1px solid rgba(19,35,63,.1); }
+  .stat b { display: block; font-size: 2rem; color: var(--navy); line-height: 1.2; }
+  .stat span { font-size: .92rem; color: var(--muted); }
+
+  /* Sections */
+  section { padding: 56px 0; }
+  .eyebrow {
+    display: inline-block; padding: 7px 16px; border-radius: 999px; font-size: .88rem; color: var(--navy);
+    background: rgba(255,255,255,.7); margin-bottom: 14px;
+  }
+  h2.sec { font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.35; margin: 0 0 12px; color: var(--navy); }
+  .lead { color: var(--muted); margin: 0 0 30px; max-width: 58ch; }
+
+  /* Partners */
+  .partners { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+  .partner { padding: 26px; }
+  .partner .logo-slot { min-height: 96px; margin-bottom: 18px; }
+  .partner h3 { margin: 0 0 6px; color: var(--navy); font-size: 1.12rem; }
+  .partner p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  /* Products */
+  .products { display: flex; gap: 16px; overflow-x: auto; padding: 6px 2px 18px; scroll-snap-type: x mandatory; }
+  .product { min-width: 260px; flex: 0 0 260px; padding: 22px; scroll-snap-align: start; display: flex; flex-direction: column; }
+  .product .pic { height: 140px; border-radius: 18px; background: rgba(255,255,255,.6); display: grid; place-items: center; color: var(--muted); font-size: .85rem; margin-bottom: 16px; }
+  .product h3 { margin: 0 0 4px; color: var(--navy); font-size: 1.05rem; }
+  .product p { margin: 0 0 14px; color: var(--muted); font-size: .9rem; }
+  .tag { align-self: flex-start; font-size: .8rem; padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,.8); color: var(--navy); margin-bottom: 14px; }
+  .product .btn { font-size: .92rem; padding: 11px 18px; background: rgba(255,255,255,.9); color: var(--wa); border: 1.5px solid rgba(26,143,76,.35); margin-top: auto; }
+
+  /* Coverage */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { padding: 10px 18px; border-radius: 999px; background: rgba(255,255,255,.75); color: var(--navy); font-size: .95rem; border: 0; }
+  .chip.on { background: var(--btn-navy); color: #fff; }
+  .coverage-card { padding: 30px; }
+
+  /* Contact form */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 26px; align-items: start; }
+  .contact-card { padding: 30px; }
+  .contact-card .big { display: block; font-size: 1.3rem; font-weight: 700; color: var(--navy); text-decoration: none; margin: 4px 0 18px; direction: ltr; text-align: start; }
+  .contact-card .label { font-size: .88rem; color: var(--muted); }
+  .form { padding: 30px; }
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-size: .92rem; color: var(--navy); margin-bottom: 8px; font-weight: 600; }
+  .field input, .field select, .field textarea {
+    width: 100%; padding: 14px 18px; border-radius: 18px; border: 1px solid rgba(19,35,63,.12);
+    background: rgba(255,255,255,.85); font: inherit; color: var(--ink); font-size: 1rem;
+  }
+  .field textarea { min-height: 120px; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--saffron); border-color: transparent; }
+  .form .btn { width: 100%; background: var(--wa); color: #fff; }
+  .form .btn:hover { background: var(--wa-2); }
+
+  /* Footer */
+  footer { padding: 30px 0 40px; }
+  .footer-card { padding: 30px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+  .footer-card strong { color: var(--navy); font-size: 1.05rem; }
+  .footer-card p { margin: 0; color: var(--muted); font-size: .92rem; }
+  .copy { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 22px; }
+
+  .foot-card { padding: 30px; }
+  .foot-head { display: flex; align-items: center; gap: 12px; }
+  .foot-name { font-weight: 700; font-size: 1.15rem; color: var(--navy); }
+  .foot-desc { color: var(--muted); margin: 14px 0 24px; max-width: 52ch; }
+  .foot-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .foot-cols h4 { margin: 0 0 8px; color: var(--navy); font-size: 1rem; }
+  .foot-cols a { display: block; padding: 5px 0; color: var(--muted); text-decoration: none; }
+  .foot-cols a:hover { color: var(--navy); }
+  .ltr { direction: ltr; unicode-bidi: isolate; }
+  @media (max-width: 560px) { .foot-cols { grid-template-columns: 1fr; } }
+
+  /* Floating WhatsApp */
+  .float-wa {
+    position: fixed; inset-inline-start: 18px; bottom: 18px; z-index: 30;
+    width: 58px; height: 58px; border-radius: 50%; background: var(--wa); color: #fff;
+    display: grid; place-items: center; box-shadow: 0 10px 26px rgba(26,143,76,.35);
+  }
+  .float-wa:hover { background: var(--wa-2); }
+
+  /* Motion: one load moment */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-grid > * { animation: rise .7s ease both; }
+    .hero-grid > :last-child { animation-delay: .12s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  }
+
+  .divider { border: 0; border-top: 1px solid var(--line-2); margin: 24px 0 0; }
+  .drawer { display: none; width: min(1080px, 92%); margin: 10px auto 0; padding: 10px; border-radius: 24px; }
+  .drawer.open { display: grid; gap: 4px; }
+  .drawer a { padding: 12px 16px; border-radius: 16px; text-decoration: none; font-weight: 600; color: var(--navy); }
+  .drawer a:hover { background: var(--surface); }
+  .map-card { margin-top: 24px; padding: 16px; border-radius: 24px; border: 1px solid var(--line-2); background: var(--surface); }
+  .map-card svg { display: block; width: 100%; height: auto; }
+  .map-line { stroke: var(--map-line); fill: none; stroke-width: 1; }
+  .dot { fill: var(--navy); }
+  .hub { fill: var(--btn-navy); }
+  .hub-label { fill: #fff; font: 600 15px system-ui, sans-serif; }
+  .orbit { transform-origin: 300px 200px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .orbit { animation: spin 90s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  }
+
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --navy: #E6EEFB;
+    --ink: #E6EEFB;
+    --btn-navy: #2F4F80;
+    --muted: #A9B6CB;
+    --glass: rgba(24, 34, 52, 0.6);
+    --glass-edge: rgba(255, 255, 255, 0.12);
+    --bg: #0D1421;
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    --surface: rgba(255, 255, 255, 0.08);
+    --line-2: rgba(255, 255, 255, 0.14);
+    --map-line: rgba(255, 255, 255, 0.3);
+  }
+  [data-theme="dark"] body {
+    background:
+      radial-gradient(900px 500px at 10% -10%, #1C2C4A 0%, transparent 60%),
+      radial-gradient(700px 500px at 100% 20%, #173A37 0%, transparent 55%),
+      var(--bg);
+  }
+  [data-theme="dark"] .menu-btn,
+  [data-theme="dark"] .lang button,
+  [data-theme="dark"] .eyebrow,
+  [data-theme="dark"] .chip,
+  [data-theme="dark"] .logo-slot,
+  [data-theme="dark"] .pic,
+  [data-theme="dark"] .tag,
+  [data-theme="dark"] .field input,
+  [data-theme="dark"] .field select,
+  [data-theme="dark"] .field textarea,
+  [data-theme="dark"] .product .btn { background: var(--surface); color: var(--navy); }
+  [data-theme="dark"] .lang button[aria-pressed="true"],
+  [data-theme="dark"] .chip.on { background: var(--btn-navy); color: #fff; }
+  [data-theme="dark"] .product .btn { color: #6FD29A; border-color: rgba(111, 210, 154, 0.35); }
+  [data-theme="dark"] .logo-slot { border-color: rgba(255, 255, 255, 0.2); color: var(--muted); }
+  [data-theme="dark"] .field input,
+  [data-theme="dark"] .field select,
+  [data-theme="dark"] .field textarea { color: var(--ink); border-color: rgba(255, 255, 255, 0.14); }
+
+  @media (max-width: 860px) {
+    .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero { padding: 40px 0 24px; }
+    nav.links { display: none; }
+    .stats-card { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(3) { border-inline-start: 0; }
+    .stat:nth-child(n+3) { border-top: 1px solid rgba(19,35,63,.1); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="topbar glass">
+      <div class="tools">
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <button class="menu-btn" id="themeBtn" type="button" aria-label="Dark or light mode"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      </div>
+      <a class="brand" href="#top" aria-label="Rahmani Sehat Ltd home">
+        <span class="brand-name">Rahmani Sehat Ltd</span>
+        <svg width="44" height="44" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="22.5" fill="#FFFFFF" stroke="#1B8FD6" stroke-width="2.5"/>
+          <path d="M24 15C18 9 11 10 8 14C13 14 16 15 18 17C20 17 22 16 24 15Z" fill="#1B8FD6"/>
+          <path d="M24 15C30 9 37 10 40 14C35 14 32 15 30 17C28 17 26 16 24 15Z" fill="#1B8FD6"/>
+          <circle cx="24" cy="14" r="2" fill="#1B8FD6"/>
+          <path d="M24 17V40" stroke="#1B8FD6" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M24 21C18 24 18 28 24 31C30 34 30 37 24 40" fill="none" stroke="#1B8FD6" stroke-width="2" stroke-linecap="round"/>
+          <path d="M24 21C30 24 30 28 24 31C18 34 18 37 24 40" fill="none" stroke="#1B8FD6" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <nav class="glass drawer" id="drawer" aria-label="Main">
+    <a href="#partners" data-i18n="nav_partners">Partners</a>
+    <a href="#products" data-i18n="nav_products">Products</a>
+    <a href="#coverage" data-i18n="nav_coverage">Coverage</a>
+    <a href="#contact" data-i18n="nav_contact">Contact</a>
+    <div class="lang" role="group" aria-label="Language" style="justify-content:center;padding:6px 0">
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="fa" aria-pressed="false">دری</button>
+      <button type="button" data-lang="ps" aria-pressed="true">پښتو</button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 data-i18n="hero_title">معتبر روغتیايي محصولات، په پاملرنې سره ستاسو ته رسول کیږي.</h1>
+        <p data-i18n="hero_text">رحمانی صحت د معتبرو شریکو برنڼو سره کار کوي او درملتونونو، کلینیکونو او روغتونونو ته یې تامین کوي.</p>
+        <div class="actions">
+          <a class="btn btn-wa" href="https://wa.me/93774620072" target="_blank" rel="noopener" data-i18n="cta_wa">په واټساپ خبرې وکړئ</a>
+          <a class="btn btn-navy" href="#products"><span data-i18n="cta_products">محصولات وګورئ</span><span class="icon-circle" aria-hidden="true">←</span></a>
+        </div>
+      </div>
+      <aside class="glass hero-card">
+        <h2 data-i18n="panel_title">هر پوښتنه وکړئ</h2>
+        <p data-i18n="panel_text">په واټساپ پیغام راولیږئ. د کاري وختونو کې ځواب ورکوو.</p>
+        <a class="btn btn-wa" href="https://wa.me/93774620072" target="_blank" rel="noopener" dir="ltr" style="width:100%">+93 774 620 072</a>
+        <hr class="divider">
+        <div class="logo-row">
+          <div class="logo-slot">Partner logo 1</div>
+          <div class="logo-slot">Partner logo 2</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="wrap glass stats-card">
+      <div class="stat"><b>2015</b><span data-i18n="stat1">له کال راهیسې</span></div>
+      <div class="stat"><b>+50</b><span data-i18n="stat2">ویشل شوي محصولات</span></div>
+      <div class="stat"><b>+10</b><span data-i18n="stat3">شریک برنڼه</span></div>
+      <div class="stat"><b>+17</b><span data-i18n="stat4">ولایتونه او بنارونه</span></div>
+    </div>
+  </div>
+
+  <section id="partners">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="partners_eyebrow">زموږ شریکان</span>
+      <h2 class="sec" data-i18n="partners_title">زموږ معتبر برنڼه</h2>
+      <p class="lead" data-i18n="partners_text">هغه برنڼه چې موږ یې په شبکه کې تامین کوو.</p>
+      <div class="partners">
+        <!-- Replace each block with the partner's name, logo (with permission), and description -->
+        <article class="glass partner">
+          <div class="logo-slot">Partner logo 1</div>
+          <h3>Partner A</h3>
+          <p>Demo: generic pharmaceutical products</p>
+        </article>
+        <article class="glass partner">
+          <div class="logo-slot">Partner logo 2</div>
+          <h3>Partner B</h3>
+          <p>Demo: medical supplies and equipment</p>
+        </article>
+        <article class="glass partner">
+          <div class="logo-slot">Partner logo 3</div>
+          <h3>Partner C</h3>
+          <p>Demo: vitamins and supplements</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="products_eyebrow">ځانګړي محصولات</span>
+      <h2 class="sec" data-i18n="products_title">زموږ محصولات</h2>
+      <p class="lead" data-i18n="products_text">بشپړ لیست او شتون د موږ څخه وپوښتئ.</p>
+      <div class="products">
+        <!-- Duplicate a .product block for each item -->
+        <article class="glass product">
+          <div class="pic">Product photo</div>
+          <span class="tag">3 × 10 tablets</span>
+          <h3>Demo Product A</h3>
+          <p>Demo: pain relief tablets</p>
+          <a class="btn" href="https://wa.me/93774620072?text=Product%20name" target="_blank" rel="noopener" data-i18n="ask_btn">په واټساپ وپوښتئ</a>
+        </article>
+        <article class="glass product">
+          <div class="pic">Product photo</div>
+          <span class="tag">200 ml syrup</span>
+          <h3>Demo Product B</h3>
+          <p>Demo: children's cough syrup</p>
+          <a class="btn" href="https://wa.me/93774620072?text=Product%20name" target="_blank" rel="noopener" data-i18n="ask_btn">په واټساپ وپوښتئ</a>
+        </article>
+        <article class="glass product">
+          <div class="pic">Product photo</div>
+          <span class="tag">60 ml suspension</span>
+          <h3>Demo Product C</h3>
+          <p>Demo: oral rehydration solution</p>
+          <a class="btn" href="https://wa.me/93774620072?text=Product%20name" target="_blank" rel="noopener" data-i18n="ask_btn">په واټساپ وپوښتئ</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="coverage">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="coverage_eyebrow">د خدماتو ساحه</span>
+      <h2 class="sec" data-i18n="coverage_title">زموږ د خدماتو ساحه</h2>
+      <p class="lead" data-i18n="coverage_text">موږ درملتونونو، کلینیکونو او روغتونونو ته په ټول هیواد کې خدمت کوو.</p>
+      <div class="glass coverage-card">
+        <div class="chips">
+          <!-- Sample list copied from the screenshot: replace with the cities and provinces you actually serve -->
+          <span class="chip on">Kabul</span>
+          <span class="chip">Jalalabad</span>
+          <span class="chip">Laghman</span>
+          <span class="chip">Kunar</span>
+          <span class="chip">Khost</span>
+          <span class="chip">Kandahar</span>
+          <span class="chip">Ghazni</span>
+          <span class="chip">Balkh</span>
+          <span class="chip">Parwan</span>
+          <span class="chip">Paktia</span>
+          <span class="chip">Paktika</span>
+          <span class="chip">Herat</span>
+          <span class="chip">Helmand</span>
+          <span class="chip">Kunduz</span>
+          <span class="chip">Takhar</span>
+          <span class="chip">Baghlan</span>
+          <span class="chip">Faryab</span>
+        </div>
+        <div class="map-card">
+          <svg viewBox="0 0 600 400" role="img" aria-label="Delivery network map centred on Kabul">
+            <ellipse class="map-line" cx="300" cy="200" rx="260" ry="150" stroke-dasharray="3 6"/>
+            <ellipse class="map-line" cx="300" cy="200" rx="150" ry="90" stroke-dasharray="3 6"/>
+            <g class="orbit">
+              <g class="map-line" stroke-dasharray="2 5">
+                <line x1="300" y1="200" x2="255" y2="52"/>
+                <line x1="300" y1="200" x2="430" y2="70"/>
+                <line x1="300" y1="200" x2="544" y2="149"/>
+                <line x1="300" y1="200" x2="556" y2="226"/>
+                <line x1="300" y1="200" x2="499" y2="296"/>
+                <line x1="300" y1="200" x2="345" y2="348"/>
+                <line x1="300" y1="200" x2="170" y2="330"/>
+                <line x1="300" y1="200" x2="56" y2="251"/>
+                <line x1="300" y1="200" x2="56" y2="149"/>
+                <line x1="300" y1="200" x2="151" y2="77"/>
+                <line x1="300" y1="200" x2="225" y2="122"/>
+                <line x1="300" y1="200" x2="430" y2="155"/>
+                <line x1="300" y1="200" x2="430" y2="245"/>
+                <line x1="300" y1="200" x2="170" y2="245"/>
+              </g>
+              <g>
+                <circle class="dot" cx="255" cy="52" r="5"/>
+                <circle class="dot" cx="430" cy="70" r="5"/>
+                <circle class="dot" cx="544" cy="149" r="5"/>
+                <circle class="dot" cx="556" cy="226" r="5"/>
+                <circle class="dot" cx="499" cy="296" r="5"/>
+                <circle class="dot" cx="345" cy="348" r="5"/>
+                <circle class="dot" cx="170" cy="330" r="5"/>
+                <circle class="dot" cx="56" cy="251" r="5"/>
+                <circle class="dot" cx="56" cy="149" r="5"/>
+                <circle class="dot" cx="151" cy="77" r="5"/>
+                <circle class="dot" cx="225" cy="122" r="5"/>
+                <circle class="dot" cx="430" cy="155" r="5"/>
+                <circle class="dot" cx="430" cy="245" r="5"/>
+                <circle class="dot" cx="170" cy="245" r="5"/>
+              </g>
+            </g>
+            <circle class="hub" cx="300" cy="200" r="34"/>
+            <text class="hub-label" x="300" y="205" text-anchor="middle">Kabul</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="glass contact-card">
+        <span class="eyebrow" data-i18n="contact_eyebrow">اړیکه</span>
+        <h2 class="sec" data-i18n="contact_title">موږ سره اړیکه ونیسئ</h2>
+        <p class="lead" data-i18n="contact_text">د سپارښتنو، بیو او شریکتیا پوښتنو لپاره، مستقیم په واټساپ پیغام راولیږئ.</p>
+        <div class="label" data-i18n="phone_label">واټساپ / تلیفون</div>
+        <a class="big" href="tel:+93774620072">+93 774 620 072</a>
+        <div class="label" data-i18n="hours_label">د کار وختونه</div>
+        <p style="margin:4px 0 0;font-weight:600;color:var(--navy)" data-i18n="hours_value">شنبه تر پنجشنبې، ۹ تر ۱۷</p>
+      </div>
+
+      <form class="glass form" id="contactForm">
+        <div class="field">
+          <label for="name" data-i18n="f_name">بشپړ نوم</label>
+          <input id="name" name="name" required autocomplete="name" data-i18n-ph="ph_name" placeholder="ستاسو نوم">
+        </div>
+        <div class="field">
+          <label for="org" data-i18n="f_org">د مرکز نوم (اختیاري)</label>
+          <input id="org" name="org" data-i18n-ph="ph_org" placeholder="د مرکز نوم">
+        </div>
+        <div class="field">
+          <label for="role" data-i18n="f_role">ږده یم</label>
+          <select id="role" name="role">
+            <option data-i18n="r1">درملتون</option>
+            <option data-i18n="r2">کلینیک</option>
+            <option data-i18n="r3">روغتون</option>
+            <option data-i18n="r4">ډاکټر</option>
+            <option data-i18n="r5">بل</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="interest" data-i18n="f_interest">علاقه لرم</label>
+          <select id="interest" name="interest">
+            <option data-i18n="i1">ټول محصولات</option>
+            <option data-i18n="i2">د شریکو برنڼو محصولات</option>
+            <option data-i18n="i3">شریکتیا</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg" data-i18n="f_msg">پیغام</label>
+          <textarea id="msg" name="msg" data-i18n-ph="ph_msg" placeholder="کوم محصولات ته اړتیا لرئ؟"></textarea>
+        </div>
+        <button class="btn" type="submit" data-i18n="f_submit">د واټساپ له لارې ولیږئ</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+  <div class="wrap">
+    <div class="glass foot-card">
+      <div class="foot-head">
+        <svg width="44" height="44" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="22.5" fill="#FFFFFF" stroke="#1B8FD6" stroke-width="2.5"/>
+          <path d="M24 15C18 9 11 10 8 14C13 14 16 15 18 17C20 17 22 16 24 15Z" fill="#1B8FD6"/>
+          <path d="M24 15C30 9 37 10 40 14C35 14 32 15 30 17C28 17 26 16 24 15Z" fill="#1B8FD6"/>
+          <circle cx="24" cy="14" r="2" fill="#1B8FD6"/>
+          <path d="M24 17V40" stroke="#1B8FD6" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M24 21C18 24 18 28 24 31C30 34 30 37 24 40" fill="none" stroke="#1B8FD6" stroke-width="2" stroke-linecap="round"/>
+          <path d="M24 21C30 24 30 28 24 31C18 34 18 37 24 40" fill="none" stroke="#1B8FD6" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="foot-name">Rahmani Sehat Ltd</span>
+      </div>
+      <p class="foot-desc" data-i18n="footer_desc">د معتبرو روغتیايي محصولاتو تامین او ویش، د شریکو برنڼو سره.</p>
+      <div class="foot-cols">
+        <div>
+          <h4 data-i18n="f_explore">چټک لینکونه</h4>
+          <a href="#partners" data-i18n="nav_partners">شریکان</a>
+          <a href="#products" data-i18n="nav_products">محصولات</a>
+          <a href="#coverage" data-i18n="nav_coverage">د خدماتو ساحه</a>
+          <a href="#contact" data-i18n="nav_contact">اړیکه</a>
+        </div>
+        <div>
+          <h4 data-i18n="f_contact_h">اړیکه</h4>
+          <a href="tel:+93774620072" class="ltr">+93 774 620 072</a>
+          <a href="mailto:Rahmanisehatltd@gmail.com" class="ltr">Rahmanisehatltd@gmail.com</a>
+          <a href="https://wa.me/93774620072" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <p class="copy">© 2026 Rahmani Sehat Ltd. <span data-i18n="copy">ټول حقوق خوندي دي.</span></p>
+  </div>
+</footer>
+</main>
+
+<a class="float-wa" href="https://wa.me/93774620072" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1.1 2.6 11.5 11.5 0 0 0 4.4 3.9c2.1.9 2.5.7 3 .7a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3z"/></svg>
+</a>
+
+<script>
+  const T = {
+    en: {
+      brand: "Rahmani Sehat", brand_full: "Rahmani Sehat Ltd", footer_desc: "Supply and distribution of trusted health products with partner brands.", f_explore: "Quick links", f_contact_h: "Contact", nav_partners: "Partners", nav_products: "Products", nav_coverage: "Coverage", nav_contact: "Contact", copy: "All rights reserved.", footer_tag: "Health products supply.",
+      hero_title: "Trusted health products, delivered with care.",
+      hero_text: "Rahmani Sehat works with trusted partner brands to supply pharmacies, clinics and hospitals.",
+      cta_wa: "Chat on WhatsApp", cta_products: "View products",
+      panel_title: "Ask us anything", panel_text: "Send a message on WhatsApp. We reply during working hours.",
+      stat1: "Serving since", stat2: "Products", stat3: "Partner brands", stat4: "Provinces & cities",
+      partners_eyebrow: "Our partners", partners_title: "Our partner brands", partners_text: "Brands we supply across our network.",
+      products_eyebrow: "Featured", products_title: "Our products", products_text: "Ask for the full list and current availability.",
+      ask_btn: "Ask on WhatsApp",
+      coverage_eyebrow: "Coverage", coverage_title: "Where we deliver", coverage_text: "We supply pharmacies, clinics and hospitals across the country.",
+      contact_eyebrow: "Contact", contact_title: "Contact us", contact_text: "For orders, prices and partnership questions, message us on WhatsApp.",
+      phone_label: "WhatsApp / Phone", hours_label: "Working hours", hours_value: "Saturday to Thursday, 9:00 to 17:00",
+      f_name: "Full name", ph_name: "Your name", f_org: "Organisation (optional)", ph_org: "Organisation name",
+      f_role: "I am a", r1: "Pharmacy", r2: "Clinic", r3: "Hospital", r4: "Doctor", r5: "Other",
+      f_interest: "Interested in", i1: "All products", i2: "Partner brand products", i3: "Partnership",
+      f_msg: "Message", ph_msg: "Which products do you need?", f_submit: "Send via WhatsApp"
+    },
+    fa: {
+      brand: "رحمانی صحت", brand_full: "رحمانی صحت ایل تی دی", footer_desc: "تأمین و توزیع محصولات صحی معتبر با همکاری برندهای همکار.", f_explore: "دسترسی سریع", f_contact_h: "تماس", nav_partners: "همکاران", nav_products: "محصولات", nav_coverage: "پوشش", nav_contact: "تماس", copy: "تمام حقوق محفوظ است.", footer_tag: "تأمین محصولات صحی.",
+      hero_title: "محصولات صحی معتبر، با دقت به دست شما می‌رسد.",
+      hero_text: "رحمانی صحت با برندهای معتبر همکار، داروخانه‌ها، کلینیک‌ها و شفاخانه‌ها را تأمین می‌کند.",
+      cta_wa: "گفتگو در واتس‌اپ", cta_products: "مشاهده محصولات",
+      panel_title: "هر پرسشی دارید بپرسید", panel_text: "پیام خود را در واتس‌اپ بفرستید. در ساعات کاری پاسخ می‌دهیم.",
+      stat1: "از سال", stat2: "محصولات", stat3: "برندهای همکار", stat4: "ولایت و شهر",
+      partners_eyebrow: "همکاران ما", partners_title: "برندهای همکار ما", partners_text: "برندهایی که در شبکه ما تأمین می‌شوند.",
+      products_eyebrow: "برجسته", products_title: "محصولات ما", products_text: "فهرست کامل و موجودی را از ما بپرسید.",
+      ask_btn: "پرسش در واتس‌اپ",
+      coverage_eyebrow: "پوشش", coverage_title: "محل‌های خدمات ما", coverage_text: "داروخانه‌ها، کلینیک‌ها و شفاخانه‌ها را در سراسر کشور تأمین می‌کنیم.",
+      contact_eyebrow: "تماس", contact_title: "با ما تماس بگیرید", contact_text: "برای سفارش، قیمت و همکاری، مستقیم در واتس‌اپ پیام بدهید.",
+      phone_label: "واتس‌اپ / تلفن", hours_label: "ساعات کاری", hours_value: "شنبه تا پنجشنبه، ۹ تا ۱۷",
+      f_name: "نام کامل", ph_name: "نام شما", f_org: "سازمان (اختیاری)", ph_org: "نام سازمان",
+      f_role: "من هستم", r1: "داروخانه", r2: "کلینیک", r3: "شفاخانه", r4: "دکتر", r5: "سایر",
+      f_interest: "علاقه‌مندم به", i1: "همه محصولات", i2: "محصولات برندهای همکار", i3: "همکاری",
+      f_msg: "پیام", ph_msg: "به کدام محصولات نیاز دارید؟", f_submit: "ارسال از طریق واتس‌اپ"
+    },
+    ps: {
+      brand: "رحمانی صحت", brand_full: "رحمانی صحت ایل ټي ډي", footer_desc: "د معتبرو روغتیايي محصولاتو تامین او ویش، د شریکو برنڼو سره.", f_explore: "چټک لینکونه", f_contact_h: "اړیکه", nav_partners: "شریکان", nav_products: "محصولات", nav_coverage: "د خدماتو ساحه", nav_contact: "اړیکه", copy: "ټول حقوق خوندي دي.", footer_tag: "د روغتیايي محصولاتو تامین.",
+      hero_title: "معتبر روغتیايي محصولات، په پاملرنې سره ستاسو ته رسول کیږي.",
+      hero_text: "رحمانی صحت د معتبرو شریکو برنڼو سره کار کوي او درملتونونو، کلینیکونو او روغتونونو ته یې تامین کوي.",
+      cta_wa: "په واټساپ خبرې وکړئ", cta_products: "محصولات وګورئ",
+      panel_title: "هر پوښتنه وکړئ", panel_text: "په واټساپ پیغام راولیږئ. د کاري وختونو کې ځواب ورکوو.",
+      stat1: "له کال راهیسې", stat2: "ویشل شوي محصولات", stat3: "شریک برنڼه", stat4: "ولایتونه او بنارونه",
+      partners_eyebrow: "زموږ شریکان", partners_title: "زموږ معتبر برنڼه", partners_text: "هغه برنڼه چې موږ یې په شبکه کې تامین کوو.",
+      products_eyebrow: "ځانګړي", products_title: "زموږ محصولات", products_text: "بشپړ لیست او شتون د موږ څخه وپوښتئ.",
+      ask_btn: "په واټساپ وپوښتئ",
+      coverage_eyebrow: "د خدماتو ساحه", coverage_title: "موږ چیرته رسوو", coverage_text: "موږ درملتونونو، کلینیکونو او روغتونونو ته په ټول هیواد کې خدمت کوو.",
+      contact_eyebrow: "اړیکه", contact_title: "موږ سره اړیکه ونیسئ", contact_text: "د سپارښتنو، بیو او شریکتیا پوښتنو لپاره، مستقیم په واټساپ پیغام راولیږئ.",
+      phone_label: "واټساپ / تلیفون", hours_label: "د کار وختونه", hours_value: "شنبه تر پنجشنبې، ۹ تر ۱۷",
+      f_name: "بشپړ نوم", ph_name: "ستاسو نوم", f_org: "د مرکز نوم (اختیاري)", ph_org: "د مرکز نوم",
+      f_role: "زه یم", r1: "درملتون", r2: "کلینیک", r3: "روغتون", r4: "ډاکټر", r5: "بل",
+      f_interest: "علاقه لرم", i1: "ټول محصولات", i2: "د شریکو برنڼو محصولات", i3: "شریکتیا",
+      f_msg: "پیغام", ph_msg: "کوم محصولات ته اړتیا لرئ؟", f_submit: "د واټساپ له لارې ولیږئ"
+    }
+  };
+
+  function setLang(lang) {
+    const dict = T[lang];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const k = el.dataset.i18n;
+      if (dict[k]) el.textContent = dict[k];
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+      const k = el.dataset.i18nPh;
+      if (dict[k]) el.placeholder = dict[k];
+    });
+    document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  }
+  document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+  // Contact form: opens WhatsApp with the details already written in the message
+  document.getElementById("contactForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const text = [
+      "Name: " + f.get("name"),
+      f.get("org") ? "Organisation: " + f.get("org") : "",
+      "I am a: " + e.target.role.selectedOptions[0].textContent,
+      "Interested in: " + e.target.interest.selectedOptions[0].textContent,
+      f.get("msg") ? "Message: " + f.get("msg") : ""
+    ].filter(Boolean).join("\n");
+    window.open("https://wa.me/93774620072?text=" + encodeURIComponent(text), "_blank", "noopener");
+  });
+
+  const root = document.documentElement;
+  function setTheme(t) { root.dataset.theme = t; }
+  document.getElementById("themeBtn").addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark"));
+  setTheme(matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.getElementById("menuBtn").addEventListener("click", () => document.getElementById("drawer").classList.toggle("open"));
+
+  setLang("ps");
+</script>
+</body>
+</html>
